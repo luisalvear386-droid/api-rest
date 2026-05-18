@@ -14,10 +14,10 @@ class libroController {
   }
   async getAll(req, res) {
     try {
-      const [result] = await pool.query("SELECT * FROM libros");
+      const [result] = await pool.query("SELECT * FROM libros"); 
       res.json(result);
     } catch (error) {
-      res.status(500).json({ error: "Error al obtener los libros" });
+      res.status(500).json({ error: "No se puedo obtener todos los libros" });
     }
   }
   async add(req, res) {
@@ -43,7 +43,7 @@ class libroController {
       );
       res.json({ "Libro actualizado correctamente": result.changedRows });
     } catch (error) {
-      res.status(500).json({ error: "Error al actualizar el libro" });
+      res.status(500).json({ error: "Hubo un error al actualizar el libro" });
     }
   }
   async delete(req, res) {
@@ -55,7 +55,7 @@ class libroController {
       ]);
 
       res.json({
-        message: "Libro eliminado correctamente",
+        message: "Libro eliminado con éxito",
       });
     } catch (error) {
       res.status(500).json({
